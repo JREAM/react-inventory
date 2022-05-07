@@ -7,8 +7,10 @@ import {
 } from "react-router-dom";
 import Navigation from './components/Navigation'
 import Home from './routes/home'
+import PageNotFound from './routes/pageNotFound'
 import Checkout from "./routes/checkout";
 import Shop from "./routes/shop";
+import ShopItem from "./routes/shopItem";
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -18,7 +20,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="shop" element={<Shop />} />
+          {/* shop/:id needs real lookup for 404 not static text in file */}
+          <Route path="shop/:id" element={<ShopItem />} />
           <Route path="checkout" element={<Checkout />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,5 +1,7 @@
 import Item from '../components/Item'
+import { useParams } from "react-router-dom";
 
+// Combine this JS/JSON or make api later
 const items = [
   {
     "id": 1,
@@ -23,19 +25,19 @@ const items = [
   }
 ]
 
+export default function ShopItem() {
+  const { id } = useParams();
+  const item = items.find(item => item.id === parseInt(id));
 
-export default function Shop() {
   return (
     <div className="container">
-      <h2>Shop</h2>
-
-      {items.map((item) => (
+      <h2>Shop Item</h2>
         <Item
           id={item.id}
           title={item.title}
           desc={item.desc}
-        />
-      ))}
+          link={false}
+      />
     </div>
   );
 }
