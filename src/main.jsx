@@ -5,6 +5,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
 import Navigation from './components/Navigation'
 import Home from './routes/home'
 import PageNotFound from './routes/pageNotFound'
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Navigation />
+      <CookiesProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="shop" element={<Shop />} />
@@ -25,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="checkout" element={<Checkout />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+      </CookiesProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

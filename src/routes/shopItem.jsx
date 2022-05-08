@@ -1,23 +1,28 @@
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import Item from '../components/Item'
+import CartAddItem from '../components/CartAddItem'
 
 export default function ShopItem() {
   const [product, setProduct] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const { id } = useParams();
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)
       .then(res => res.json())
-      .then(data =>
+      .then(data => {
         setProduct(data)
-      )
+        setIsLoading(false)
+      })
   }, [])
 
   return (
     <div className="container">
       <h2>Shop Item</h2>
+      {isLoading && <div className="loader"></div>}
       {product &&
+        <>
         <Item
           key={product.id}
           id={product.id}
@@ -30,7 +35,12 @@ export default function ShopItem() {
           desc={product.description}
           link={false}
         />
-      }
+        <CartAddItem
+          id={product.id}
+          price={product.price}
+        />
+        </>
+        }
     </div>
   );
 }
