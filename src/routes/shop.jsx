@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import Item from '../components/Item'
+import ItemSort from '../components/ItemSort'
 
 export default function Shop() {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [sortOrder, setSortOrder]=useState('default')
+  const [sortType, setSortType] = useState('title')
+  const [sortOrder, setSortOrder] = useState('ascending')
 
   useEffect(() => {
     fetch('https://dummyjson.com/products?skip=0&limit=10')
@@ -17,10 +19,22 @@ export default function Shop() {
       })
   }, [])
 
+
+  const handleSortType = (e) => {
+    console.log(e.target.value)
+    setSortType(e.target.value)
+  }
+
+  const handleSortOrder = (e) => {
+    console.log(e.target.value)
+    setSortOrder(e.target.value)
+  }
+
   return (
     <div className="container">
       <h2>Shop</h2>
       {isLoading && <div className="loader"></div>}
+      <ItemSort sortType={sortType} sortOrder={sortOrder} handleSortType={handleSortType} handleSortOrder={handleSortOrder} />
       {
         products.map((item) =>
           <Item
