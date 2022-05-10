@@ -18,27 +18,22 @@ export default function Shop() {
     }, [])
 
   // This needs refactoring eventually.
-  // BUG: drop downs down always change perfectly with arrow navigation
+  // TODO: This is a lousy way to sort LOL, make it better later
   const sort=() => {
-    if (sortType=='rating') {
-      if (sortOrder=='asc') {
-        products.sort((a, b) => a.rating - b.rating)
-      } else {
-        products.sort((a, b) => b.rating - a.rating)
-      }
-    }
-    if (sortType == 'price') {
-      if (sortOrder=='asc') {
-        products.sort((a, b) => a.price - b.price)
-      } else {
-        products.sort((a, b) => b.price - a.price)
-      }
-    } else {
-      if (sortOrder=='asc') {
-        products.sort((a, b) => a.title.localeCompare(b.title))
-      } else {
-        products.sort((a, b) => b.title.localeCompare(a.title))
-      }
+    console.log(sortType)
+    console.log(sortOrder)
+    if (sortType=='rating' && sortOrder == 'asc') {
+      products.sort((a, b) => a.rating - b.rating)
+    } else if (sortType=='rating' && sortOrder == 'desc') {
+      products.sort((a, b) => b.rating - a.rating)
+    } else if (sortType=='price'&&sortOrder=='asc') {
+      products.sort((a, b) => a.price - b.price)
+    } else if (sortType=='price'&&sortOrder=='desc') {
+      products.sort((a, b) => b.price - a.price)
+    } else if (sortType=='title'&&sortOrder=='asc') {
+      products.sort((a, b) => a.title.localeCompare(b.title))
+    } else if (sortType=='title'&&sortOrder=='desc') {
+      products.sort((a, b) => b.title.localeCompare(a.title))
     }
     setProducts(products)
   }
