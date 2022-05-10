@@ -17,24 +17,28 @@ export default function Shop() {
         setProducts(data.products)
         setIsLoading(false)
       })
-  }, [])
+    }, [])
 
 
   const handleSortType = (e) => {
     console.log(e.target.value)
-    setSortType(e.target.value)
+    setSortOrder(e.target.value)
+    console.log(sortType)
   }
 
   const handleSortOrder = (e) => {
-    console.log(e.target.value)
+    console.log('value ', e.target.value)
     setSortOrder(e.target.value)
+    console.log('state', sortOrder)
   }
+
+
 
   return (
     <div className="container">
       <h2>Shop</h2>
       {isLoading && <div className="loader"></div>}
-      <ItemSort sortType={sortType} sortOrder={sortOrder} handleSortType={handleSortType} handleSortOrder={handleSortOrder} />
+      <ItemSort sortType={sortType} sortOrder={sortOrder} handleSortOrder={handleSortOrder} handleSortType={handleSortType} />
       {
         products.map((item) =>
           <Item
