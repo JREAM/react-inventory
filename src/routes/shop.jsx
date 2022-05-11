@@ -6,10 +6,10 @@ export default function Shop() {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [sortType, setSortType] = useState('title')
-  const [sortOrder, setSortOrder] = useState('asc')
+  const [sortOrder, setSortOrder] = useState('desc')
 
   useEffect(() => {
-    fetch('https://dummyjson.com/products?skip=0&limit=20')
+    fetch('https://dummyjson.com/products?skip=0&limit=30')
     .then(res => res.json())
       .then(data => {
         setProducts(data.products)
@@ -17,30 +17,22 @@ export default function Shop() {
       })
     }, [])
 
-  // This needs refactoring eventually.
-  // TODO: This is a lousy way to sort LOL, make it better later
-  const sort=() => {
-    console.log(sortType)
-    console.log(sortOrder)
-    if (sortType=='rating' && sortOrder == 'asc') {
-      products.sort((a, b) => a.rating - b.rating)
-    } else if (sortType=='rating' && sortOrder == 'desc') {
-      products.sort((a, b) => b.rating - a.rating)
-    } else if (sortType=='price'&&sortOrder=='asc') {
-      products.sort((a, b) => a.price - b.price)
-    } else if (sortType=='price'&&sortOrder=='desc') {
-      products.sort((a, b) => b.price - a.price)
-    } else if (sortType=='title'&&sortOrder=='asc') {
-      products.sort((a, b) => a.title.localeCompare(b.title))
-    } else if (sortType=='title'&&sortOrder=='desc') {
-      products.sort((a, b) => b.title.localeCompare(a.title))
+  const sort = () => {
+    if (['rating', 'price'].indexOf(sortType) != -1 ) {
+      if (sortOrder === 'asc') {
+        products.sort((a, b) => a[sortType] - b[sortType] )
+      } else {
+        products.sort((a, b) => b[sortType] - a[sortType] )
+      }
+    }
+    else if (sortType=='title') {
+      if (sortOrder === 'asc') {
+        products.sort((a, b) => a.title.localeCompare(b.title))
+      } else {
+        products.sort((a, b) => b.title.localeCompare(a.title))
+      }
     }
     setProducts(products)
-  }
-
-  const handleSortType = (e) => {
-    setSortOrder(e.target.value)
-    sort()
   }
 
   const handleSortOrder = (e) => {
@@ -48,11 +40,16 @@ export default function Shop() {
     sort()
   }
 
+  const handleSortType=(e) => {
+    setSortType(e.target.value)
+    sort()
+  }
+
   return (
     <div className="container">
       <h2>Shop</h2>
       {isLoading && <div className="loader"></div>}
-      <ItemSort sortType={sortType} sortOrder={sortOrder} handleSortOrder={handleSortOrder} handleSortType={handleSortType} />
+      <ItemSort sortType={sortType} sortOrder={sortOrder} handleOrder={handleSortOrder} handleType={handleSortType} />
       {
         products.map((item) =>
           <Item
