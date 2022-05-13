@@ -8,6 +8,8 @@ import {
 import { CookiesProvider } from "react-cookie";
 import Navigation from './components/Navigation'
 import Home from './routes/home'
+import SignIn from './routes/SignIn'
+import SignUp from './routes/SignUp'
 import PageNotFound from './routes/pageNotFound'
 import Checkout from "./routes/checkout";
 import Shop from "./routes/shop";
@@ -21,6 +23,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <CookiesProvider>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="signin" element={<SignIn />} />
+          <Route path="signup" element={<SignUp />} />
           <Route path="shop" element={<Shop />} />
           {/* shop/:id needs real lookup for 404 not static text in file */}
           <Route path="shop/:id" element={<ShopItem />} />
