@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { v4 as uuid4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [message, setMessage] = useState('')
+  const [message, setMessage]=useState('')
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')){
+       return navigate("/");
+    }
+  }, []);
 
   const handleLogin = async(e) => {
     e.preventDefault();
@@ -28,7 +36,8 @@ export default function SignIn() {
 
         setEmail('');
         setPassword('');
-        setMessage('Logged In.');
+        return navigate('/')
+        setMessage('Logged In, But I want a Refresh (this page no longer access).');
       } else {
         setMessage('Invalid Login.');
       }

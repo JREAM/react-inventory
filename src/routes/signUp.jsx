@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { v4 as uuid4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState('')
@@ -8,6 +9,14 @@ export default function SignUp() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState('')
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      localStorage.clear();
+      return navigate('/')
+    }
+  }, [])
 
   const handleLogin = async(e) => {
     e.preventDefault();
@@ -33,7 +42,7 @@ export default function SignUp() {
         setEmail('');
         setPassword('');
         setConfirmPassword('');
-        setMessage('Registered.');
+        return navigate('/')
       } else {
         setMessage('Error with Form.');
       }
