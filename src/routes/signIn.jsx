@@ -47,26 +47,34 @@ export default function SignIn() {
   }
 
   return (
-    <div className="container">
-      <h2>Sign In</h2>
-      <div>
-        {message ? <p>{message}</p> : null}
+    <section className="container">
+      <div class="row">
+        <div class="column column-50 column-offset-25">
+        <h2>Sign In</h2>
+          <div>
+            {message ? <p>{message}</p> : null}
+          </div>
+          <form onSubmit={handleLogin}>
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label for="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input type="submit" value="Sign In" />
+          </form>
+        </div>
       </div>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input type="submit" value="Sign In" />
-      </form>
-    </div>
+    </section>
   );
 }

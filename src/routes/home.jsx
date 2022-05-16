@@ -3,7 +3,7 @@ import { useState } from 'react'
 export default function Home() {
 
   return (
-    <div className="container">
+    <section className="container">
       <h1>My React Playground</h1>
         <p>Using REST API calls to populate data, the fetch method.
         Using localStorage for artificial login (ignoring XSS for now).</p>
@@ -14,6 +14,6 @@ export default function Home() {
         <li>SignIn/SignUp/Signout Update Navigation State on React Router Navigate</li>
         <li>State needs to be triggered Navigation bar for Login/Logout, currently requires refresh. Redux maybe, but I want to use redux for more things rather than that one item if I use it.</li>
       </ul>
-    </div>
+    </section>
   )
 }

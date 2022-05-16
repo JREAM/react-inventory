@@ -52,44 +52,58 @@ export default function SignUp() {
   }
 
   return (
-    <div className="container">
-      <h2>Sign In</h2>
-      <div>
-        {message ? <p>{message}</p> : null}
+    <section className="container">
+      <div class="row">
+        <div class="column column-50 column-offset-25">
+          <h2>Sign Up</h2>
+          <div>
+            {message ? <p>{message}</p> : null}
+          </div>
+          <form onSubmit={handleLogin}>
+            <label for="firstName">First Name</label>
+            <input
+              id="firstName"
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <label for="lastName">Last Name</label>
+            <input
+              label="lastName"
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label for="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input type="submit" value="Sign Up" />
+          </form>
+        </div>
       </div>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input type="submit" value="Sign Up" />
-      </form>
-    </div>
+    </section>
   );
 }

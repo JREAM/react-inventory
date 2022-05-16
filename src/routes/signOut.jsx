@@ -13,11 +13,11 @@ export default function SignOut() {
 
 
   return (
-    <div className="container">
+    <section className="container">
       <h2>Logging Out</h2>
       <div>
         Please Wait...
       </div>
-    </div>
+    </section>
   );
 }

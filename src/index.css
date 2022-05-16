@@ -12,6 +12,21 @@ code {
     monospace;
 }
 
+input,
+textarea {
+  background: #fff;
+}
+
+.navigation {
+  background: #f4f5f6;
+  border-bottom: .1rem solid #d1d1d1;
+  height: 5.2rem;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 8rem;
+}
+
+
 .navigation .navigation-link,
 .navigation .navigation-title {
   display: inline;

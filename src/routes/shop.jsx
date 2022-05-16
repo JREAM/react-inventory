@@ -46,7 +46,7 @@ export default function Shop() {
   }
 
   return (
-    <div className="container">
+    <section className="container">
       <h2>Shop</h2>
       {isLoading && <div className="loader"></div>}
       <ItemSort sortType={sortType} sortOrder={sortOrder} handleOrder={handleSortOrder} handleType={handleSortType} />
@@ -63,6 +63,6 @@ export default function Shop() {
           />
         )
       }
-    </div>
+    </section>
   );
 }
