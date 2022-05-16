@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Item from '../components/Item'
 
 export default function ShopItem() {
   const [product, setProduct] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)
@@ -19,6 +20,7 @@ export default function ShopItem() {
   return (
     <div className="container">
       <h2>Shop Item</h2>
+      <a href="#" onClick={() => navigate(-1)}>Back</a>
       {isLoading && <div className="loader"></div>}
       {product &&
         <Item

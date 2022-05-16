@@ -53,8 +53,8 @@ export default function SignUp() {
 
   return (
     <section className="container">
-      <div class="row">
-        <div class="column column-50 column-offset-25">
+      <div className="row">
+        <div className="sign-up column column-50 column-offset-25">
           <h2>Sign Up</h2>
           <div>
             {message ? <p>{message}</p> : null}

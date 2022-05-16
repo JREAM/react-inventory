@@ -48,8 +48,8 @@ export default function SignIn() {
 
   return (
     <section className="container">
-      <div class="row">
-        <div class="column column-50 column-offset-25">
+      <div className="row">
+        <div className="sign-in column column-50 column-offset-25">
         <h2>Sign In</h2>
           <div>
             {message ? <p>{message}</p> : null}

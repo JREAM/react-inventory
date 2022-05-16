@@ -17,21 +17,21 @@ textarea {
   background: #fff;
 }
 
+/* Navigation */
 .navigation {
   background: #f4f5f6;
   border-bottom: .1rem solid #d1d1d1;
-  height: 5.2rem;
+  height: 5.1rem;
   width: 100%;
   max-width: 100%;
   margin-bottom: 8rem;
 }
 
-
 .navigation .navigation-link,
 .navigation .navigation-title {
   display: inline;
   font-size: 1.6rem;
-  line-height: 5.2rem;
+  line-height: 5.1rem;
   padding: 0;
   text-decoration: none;
 }
@@ -48,6 +48,7 @@ textarea {
   position: relative;
 }
 
+/* Anchors */
 a.item-view-link,
 a.item-view-link:visited {
   background: #9b4dca;
@@ -58,6 +59,55 @@ a.item-view-link:visited {
 a.item-view-link:hover {
   background: #9a4dcaa4;
 }
+
+/* Items */
+.item {
+  border: .1rem solid #d1d1d1;
+  padding: 3rem 3rem 1rem 3rem;
+  border-radius: 1rem;
+  margin-bottom: 4rem;
+}
+
+.item .item-thumbnail {
+  border-radius: .6rem;
+  max-width: 175px;
+  border: .5rem solid #d1d1d1;
+}
+
+.item .item-thumbnail:hover {
+  border: .5rem solid #9b4dca;
+}
+
+.item .item-gallery {
+  border-radius: .6rem;
+  max-width: 250px;
+  display: inline;
+  margin: 0 20px 20px 0;
+}
+
+.sign-in,
+.sign-up {
+  background: #f4f5f6;
+  border-radius: 1rem;
+  padding: 3rem !important;
+  border: .1rem solid #d1d1d1;
+}
+
+/* Input, Button */
+input,
+textarea,
+button {
+  border-radius: .6rem !important;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+textarea {
+  background: #fff !important;
+}
+
+/* Loader */
 
 .loader {
   border: 4px solid #e6e6e6;

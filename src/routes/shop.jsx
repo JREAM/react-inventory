@@ -48,10 +48,18 @@ export default function Shop() {
   return (
     <section className="container">
       <h2>Shop</h2>
-      {isLoading && <div className="loader"></div>}
-      <ItemSort sortType={sortType} sortOrder={sortOrder} handleOrder={handleSortOrder} handleType={handleSortType} />
-      {
-        products.map((item) =>
+      {isLoading
+        ?
+        <div className="loader"></div>
+        :
+        <ItemSort
+          sortType={sortType}
+          sortOrder={sortOrder}
+          handleOrder={handleSortOrder}
+          handleType={handleSortType}
+        />}
+
+      {products.map((item) =>
           <Item
           key={item.id}
           id={item.id}
@@ -60,9 +68,8 @@ export default function Shop() {
           rating={item.rating}
           thumbnail={item.thumbnail}  // Add
           desc={item.description}
-          />
-        )
-      }
+        />
+      )}
     </section>
   );
 }
