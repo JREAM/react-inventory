@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import Item from '../components/Item'
-import CartAddItem from '../components/CartAddItem'
 
 export default function ShopItem() {
   const [product, setProduct] = useState([])
@@ -22,7 +21,6 @@ export default function ShopItem() {
       <h2>Shop Item</h2>
       {isLoading && <div className="loader"></div>}
       {product &&
-        <>
         <Item
           key={product.id}
           id={product.id}
@@ -35,11 +33,6 @@ export default function ShopItem() {
           desc={product.description}
           link={false}
         />
-        <CartAddItem
-          id={product.id}
-          price={product.price}
-        />
-        </>
         }
     </div>
   );
