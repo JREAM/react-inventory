@@ -1,16 +1,18 @@
 import { useState } from 'react'
 
 export default function Home() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="container">
-      <button type="button" onClick={() => setCount((count) => count + 1)}>
-        count is: {count}
-      </button>
-      <p>
-        Culpa sit duis non non aliquip proident cupidatat deserunt amet. Duis consequat et eu duis proident nostrud sint fugiat velit proident. Non nulla ipsum deserunt et et tempor id veniam do velit. Labore non incididunt excepteur cupidatat amet excepteur ipsum fugiat eiusmod commodo ut ad id in.
-      </p>
+      <h1>My React Playground</h1>
+        <p>Using REST API calls to populate data, the fetch method.
+        Using localStorage for artificial login (ignoring XSS for now).</p>
+      <ul>
+        <li><b>Todo</b></li>
+        <li>Work on a possible real API rather than dummy data, eg: Contentful</li>
+        <li>shop/:id where ID not found needs to show error not empty item.</li>
+        <li>State needs to be triggered Navigation bar for Login/Logout, currently requires refresh. Redux maybe, but I want to use redux for more things rather than that one item if I use it.</li>
+      </ul>
     </div>
   )
 }
